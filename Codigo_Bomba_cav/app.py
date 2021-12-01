@@ -133,7 +133,7 @@ if img_file_buffer is not None:
         st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
     
     st.subheader("Imagem de exemplo, baixe e envie para testar a previsão do modelo")
-    if st.button("Manda", key=None, help=None, on_click=None, args=None, kwargs=None):
+    if st.button("Manda"):
         exemplo = random.choice(orig)
         st.image(exemplo)
         st.text("Qual o seu palpite?")
