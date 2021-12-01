@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from PIL import Image
 import random
-from keras import model
+from keras import models
 
 #%%
 wd = "/app/relialab4.0/Codigo_Bomba_cav/"
