@@ -124,12 +124,11 @@ if img_file_buffer is not None:
     st.subheader("Nova Classificação: " + str(aux))
 
     if aux == "Sem cavitação":
-        st.image(wd+'icons/Bom_cav.jpeg')
+        st.image(np.array(mpimg.imread(wd+'icons/Bom_cav.jpeg')))
     if aux == "Pouca cavitação":
-        st.image(wd+'icons/Pouco_cav.jpeg')
+        st.image(np.array(mpimg.imread(wd+'icons/Pouco_cav.jpeg')))
     if aux == "Muita cavitação":
-        st.image(wd+'icons/critico.jpeg')
-
+        st.image(np.array(mpimg.imread(wd+'icons/critico.jpeg')))
 
 #%%
 #%% 
