@@ -71,7 +71,7 @@ def read_dataset():
     
 #%%
 st.title("""Lab Preditiva 4.0""")
-
+st.write(str(os.getcwd()))
 st.header("""Diagnóstico de bomba de cavitação""")
 
 st.subheader("""Modelo de diagnóstico de bomba de cavitação""")
