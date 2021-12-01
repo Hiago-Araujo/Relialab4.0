@@ -102,8 +102,10 @@ st.image(aux)
 st.write("Envie uma nova imagem para diagnóstico")
 upload = st.file_uploader("Envie")
 
-data = upload.read()
-
+img_file_buffer = upload.read()
+if img_file_buffer is not None:
+    image = Image.open(img_file_buffer)
+    img_array = np.array(image)
 
 model_l = models.model_from_json(open(wd+"model_bombacav.json","r").read())
 model_l.load_weights("weight_bombacav.h5")
