@@ -86,12 +86,13 @@ st.header("""Diagnóstico de bomba de cavitação""")
 
 st.subheader("""Modelo de diagnóstico de bomba de cavitação""")
 
-st.write("""O modelo foi construido baseado nos dados de uma bancada de teste de cavitação de bomba, os dados foram divididos em 3 níveis de cavitação distintos influenciado por válvulas, dados de vibração foram coletados utilizando o equipamento e software da TEKNIKAO o qual emite gráficos de espectro de frequência apresentado abaixo""")
+st.write("""O modelo foi construido baseado nos dados de uma bancada de teste de cavitação de bomba, os dados foram divididos em 3 níveis de cavitação distintos influenciado pelas válvulas grifada, dados de vibração foram coletados utilizando o equipamento e software da TEKNIKAO o qual emite gráficos de espectro de frequência apresentado abaixo""")
+st.image(np.array(mpimg.imread(wd + 'Bancada.jpeg'))
 
-st.write("""\n\n\ninserir foto da bancada\n\n\n""")
 
 fm = ["Sem cavitação", "Pouca cavitação", "Muita cavitação"]
 
+st.write("Veja você mesmo como a cavitação altera o comportamento do gráfico...")
 aux = st.radio('Modo de falha:', fm)
 
 dataset, orig, model_l = read_dataset()
@@ -101,15 +102,16 @@ ind = np.where([m==aux for m in fm])[0][0]
 fig = plot_spectra(ind)
 
     
-st.write('O modelo foi treinado utilizando ' + str(int(dataset.shape[0]*0.8)) + ' imagens de treino e o teste foi executado utilizando' + str(int(dataset.shape[0]*0.2)) +' imagens de teste')
+st.write('A ideia é que a inteligência artificial, a partir de um conjunto de imagens de treinamento, possa observar essas alterações no comportamento. O modelo é uma rede neural convolucional 2d de processamento de imagem, cujo treinamento foi feito utilizando ' + str(int(dataset.shape[0]*0.99)) + ' imagens e o teste foi executado utilizando ' + str(int(dataset.shape[0]*0.33)) +' imagens')
 
-st.write('Os resultados das previsões no conjunto de teste são: ')
+st.write('Após o treinamento, é necessário avaliar os resultados para um conjunto de dados separado dos que a IA usou para aprender, Os resultados das previsões no conjunto de teste são apresentados na matriz de confusão. Note que nossa rede erra apenas 1 dos dados de testes :)')
 
 aux = np.array(mpimg.imread(wd + 'Conf_matrix.jpg'))
 
 st.image(aux)
 
 
+st.subheader("Você pode também acrescentar novas imagens e o modelo irá realizar novas previsões")
 st.write("Envie uma nova imagem para diagnóstico")
 img_file_buffer = st.file_uploader("Envie")
 
@@ -128,7 +130,8 @@ if img_file_buffer is not None:
     if aux == "Muita cavitação":
         st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
     
-st.subheader("Imagem de exemplo, baixe e envie para testar a previsão do modelo")
+
+st.subheader("Podemos de mandar uma Imagem de exemplo, baixe e envie para testar a previsão do modelo")
 agree = st.checkbox("Manda")
 
 if not agree or ('exemplo' not in locals()):
@@ -137,7 +140,7 @@ if agree:
     if exemplo == "":
         exemplo = random.choice(orig)
     st.image(exemplo)
-    st.text("Qual o seu palpite?")
+    st.subheader("Você arrisca um palpite?")
     selec = st.selectbox("?", [''] + fm)
     
     if not selec == '':
