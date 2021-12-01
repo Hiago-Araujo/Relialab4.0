@@ -15,7 +15,7 @@ from PIL import Image
 import random
 
 #%%
-wd = "/app/relialab4.0/Codigo_Bomba_cav/Codigo_Bomba_cav/"
+wd = "/app/relialab4.0/Codigo_Bomba_cav/"
 os.chdir(wd)
 
 
