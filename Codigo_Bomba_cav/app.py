@@ -52,10 +52,6 @@ folders = ["health_spectra", "fm1_spectra", "fm2_spectra"]
 dim_division = 2
 
 @st.cache(suppress_st_warning=True)
-def button_manda():
-    return st.button("Manda")
-
-@st.cache(suppress_st_warning=True)
 def read_dataset():
 
     datas = []
