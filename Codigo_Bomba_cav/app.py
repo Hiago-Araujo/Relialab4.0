@@ -138,7 +138,7 @@ if img_file_buffer is not None:
 st.subheader("Imagem de exemplo, baixe e envie para testar a previsão do modelo")
 agree = st.checkbox("Manda")
 
-if not agree or ('exemplo' not in locals):
+if not agree or ('exemplo' not in locals()):
     exemplo = ""
 if agree:
     if exemplo == "":
