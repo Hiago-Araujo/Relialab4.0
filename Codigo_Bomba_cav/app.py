@@ -137,7 +137,7 @@ if img_file_buffer is not None:
         st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
     
 st.subheader("Imagem de exemplo, baixe e envie para testar a previsão do modelo")
-agree = st.button("Manda")
+agree = st.checkbox("Manda")
 
 if agree:
     exemplo = random.choice(orig)
