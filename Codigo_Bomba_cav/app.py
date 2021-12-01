@@ -147,7 +147,7 @@ if agree:
     if not selec == '':
         st.text("a previsão correta é...")
 
-        aux = fm[predict_path(image, model_l)]
+        aux = fm[predict_path(exemplo, model_l)]
 
         if aux == "Sem cavitação":
             st.image(np.array(mpimg.imread(wd+'icons/Bom_cav.png')))
