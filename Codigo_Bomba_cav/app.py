@@ -118,7 +118,7 @@ if img_file_buffer is not None:
         print(pred)
         return(np.argmax(pred))
 
-    aux = predict_path(image, model_l)
+    aux = fm[predict_path(image, model_l)]
     st.write("Nova Classificação: " + str(aux))
 
 #%%
