@@ -119,7 +119,17 @@ if img_file_buffer is not None:
         return(np.argmax(pred))
 
     aux = fm[predict_path(image, model_l)]
+    st.subheader("O modelo previu o seguinte resultado para a imagem: " + str(aux))
+
     st.subheader("Nova Classificação: " + str(aux))
+
+    if aux == "Sem cavitação":
+	st.image(wd+'icons/Bom_cav.jpeg')
+    if aux == "Pouca cavitação":
+	st.image(wd+'icons/Pouco_cav.jpeg')
+    if aux == "Muita cavitação":
+	st.image(wd+'icons/critico.jpeg')
+
 
 #%%
 #%% 
