@@ -63,6 +63,9 @@ def read_dataset():
     label = []
     orig = []
     
+    model_l = models.model_from_json(open(wd+"model_bombacav.json","r").read())
+    model_l.load_weights("weight_bombacav.h5")
+    
     for direc in folders:
         name_dir = wd+direc
         images = os.listdir(name_dir)
@@ -77,7 +80,7 @@ def read_dataset():
         print (direc)
     
     dataset = np.asarray(dataset)
-    return dataset, orig
+    return dataset, orig, model_l
 
 
     
@@ -96,7 +99,7 @@ fm = ["Sem cavitação", "Pouca cavitação", "Muita cavitação"]
 
 aux = st.radio('Modo de falha:', fm)
 
-dataset, orig = read_dataset()
+dataset, orig, model_l = read_dataset()
 
 
 ind = np.where([m==aux for m in fm])[0][0]
@@ -119,8 +122,7 @@ if img_file_buffer is not None:
     image = Image.open(img_file_buffer)
     image = np.array(image)
 
-    model_l = models.model_from_json(open(wd+"model_bombacav.json","r").read())
-    model_l.load_weights("weight_bombacav.h5")
+
 
 
     aux = fm[predict_path(image, model_l)]
