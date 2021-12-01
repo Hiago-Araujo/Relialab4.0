@@ -23,7 +23,6 @@ wd = "/app/relialab4.0/Codigo_Bomba_cav/"
 
 def predict_path(image, model):
     aux = image[50:220,:,:]
-    st.image(aux)
     dim = int(aux.shape[1]/dim_division), int(aux.shape[0]/dim_division)
     aux = ((np.array(Image.fromarray(aux).convert('L').resize(dim)) - np.min(aux))/(np.max(aux) - np.min(aux))).reshape((1,dim[1],dim[0],1))
     pred = model.predict(aux)
@@ -121,11 +120,10 @@ img_file_buffer = st.file_uploader("Envie")
 if img_file_buffer is not None:
     image = Image.open(img_file_buffer)
     image = np.array(image)
-
-
-
-
+    st.image(image)
+    
     aux = fm[predict_path(image, model_l)]
+
     st.subheader("O modelo previu o seguinte resultado para a imagem: " + str(aux))
 
     st.subheader("Nova Classificação: " + str(aux))
