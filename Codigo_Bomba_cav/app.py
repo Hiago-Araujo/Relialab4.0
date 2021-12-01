@@ -120,10 +120,7 @@ if img_file_buffer is not None:
     
     aux = fm[predict_path(image, model_l)]
 
-    st.subheader("O modelo previu o seguinte resultado para a imagem: " + str(aux))
-
-    st.subheader("Nova Classificação: " + str(aux))
-
+    st.subheader("O modelo previu o seguinte resultado para a imagem: ")
     if aux == "Sem cavitação":
         st.image(np.array(mpimg.imread(wd+'icons/Bom_cav.png')))
     if aux == "Pouca cavitação":
