@@ -15,8 +15,8 @@ from PIL import Image
 import random
 
 #%%
-#wd = "C:/Users/Hiago Araujo/OneDrive/Desktop/Relialab/Codigo_Bomba_cav/"
-#os.chdir(wd)
+wd = "Codigo_Bomba_cav/"
+os.chdir(wd)
 
 
 #%%
