@@ -44,7 +44,11 @@ def plot_spectra(ind):
 folders = ["health_spectra", "fm1_spectra", "fm2_spectra"]
 
 dim_division = 2
-    
+
+@st.cache(suppress_st_warning=True)
+def button_manda():
+    return st.button("Manda")
+
 @st.cache(suppress_st_warning=True)
 def read_dataset():
 
@@ -133,7 +137,7 @@ if img_file_buffer is not None:
         st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
     
 st.subheader("Imagem de exemplo, baixe e envie para testar a previsão do modelo")
-if st.button("Manda"):
+if button_manda():
     exemplo = random.choice(orig)
     st.image(exemplo)
     st.text("Qual o seu palpite?")
