@@ -132,23 +132,25 @@ if img_file_buffer is not None:
     if aux == "Muita cavitação":
         st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
     
-    st.subheader("Imagem de exemplo, baixe e envie para testar a previsão do modelo")
-    if st.button("Manda"):
-        exemplo = random.choice(orig)
-        st.image(exemplo)
-        st.text("Qual o seu palpite?")
-        st.radio(fm, default = None)
+st.subheader("Imagem de exemplo, baixe e envie para testar a previsão do modelo")
+if st.button("Manda"):
+    exemplo = random.choice(orig)
+    st.image(exemplo)
+    st.text("Qual o seu palpite?")
+    st.selectbox("?", fm)
+    
+    if selectbox:
         st.text("a previsão correta é...")
-        
+
         aux = fm[predict_path(image, model_l)]
-        
+
         if aux == "Sem cavitação":
             st.image(np.array(mpimg.imread(wd+'icons/Bom_cav.png')))
         if aux == "Pouca cavitação":
             st.image(np.array(mpimg.imread(wd+'icons/Pouco_cav.png')))
         if aux == "Muita cavitação":
             st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
-    
+
 
 #%%
 #%% 
