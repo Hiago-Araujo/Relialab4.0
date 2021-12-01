@@ -156,7 +156,7 @@ if agree:
         if aux == "Muita cavitação":
             st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
 
-   agree = False
+agree = False
 #%%
 #%% 
 #!streamlit run "app.py"
