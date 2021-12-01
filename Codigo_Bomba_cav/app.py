@@ -93,7 +93,7 @@ st.write('O modelo foi treinado utilizando ' + str(int(dataset.shape[0]*0.8)) + 
 
 st.write('Os resultados das previsões no conjunto de teste são: ')
 
-aux = np.array(mpimg.imread('Conf_matrix.jpg'))
+aux = np.array(mpimg.imread(wd + 'Conf_matrix.jpg'))
 
 st.image(aux)
 
