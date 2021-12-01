@@ -58,28 +58,28 @@ def button_manda():
 @st.cache(suppress_st_warning=True)
 def read_dataset():
 
-    dataset = []
+    datas = []
     label = []
-    orig = []
+    ori = []
     
-    model_l = models.model_from_json(open(wd+"model_bombacav.json","r").read())
-    model_l.load_weights("weight_bombacav.h5")
+    model = models.model_from_json(open(wd+"model_bombacav.json","r").read())
+    model.load_weights("weight_bombacav.h5")
     
     for direc in folders:
         name_dir = wd+direc
         images = os.listdir(name_dir)
         for i in images:
-            orig.append(np.array(mpimg.imread(name_dir +'/' + i, )[:,:,:])) 
+            ori.append(np.array(mpimg.imread(name_dir +'/' + i, )[:,:,:])) 
             aux = np.array(mpimg.imread(name_dir +'/' + i, )[50:220,:,:])
             dim = int(aux.shape[1]/dim_division), int(aux.shape[0]/dim_division)
             aux = ((np.array(Image.fromarray(aux).convert('L').resize(dim)) - np.min(aux))/(np.max(aux) - np.min(aux))).reshape((dim[1],dim[0],1))
             label.append(np.where(np.array(folders) == direc)[0][0])
-            dataset.append(aux)
+            datas.append(aux)
     #        print(dim)
         print (direc)
     
-    dataset = np.asarray(dataset)
-    return dataset, orig, model_l
+    datas = np.asarray(dataset)
+    return datas, ori, model
 
 
     
