@@ -106,7 +106,7 @@ data = upload.read()
 
 
 model_l = models.model_from_json(open(wd+"model_bombacav.json","r").read())
-model_l.load_weights(wd+"weight_bombacav.h5")
+model_l.load_weights("weight_bombacav.h5")
 
 def predict_path(data, model):
     aux = np.array(mpimg.imread(data)[50:220,:,:])
