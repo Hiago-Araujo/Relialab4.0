@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from PIL import Image
 import random
+import keras.models
 
 #%%
 wd = "/app/relialab4.0/Codigo_Bomba_cav/"
@@ -96,6 +97,16 @@ st.write('Os resultados das previsões no conjunto de teste são: ')
 aux = np.array(mpimg.imread(wd + 'Conf_matrix.jpg'))
 
 st.image(aux)
+
+
+st.write("Envie uma nova imagem para diagnóstico")
+upload = st.file_uploader()
+
+data = upload.read()
+
+
+model_l = models.model_from_json(open(wd+"model_bombacav.json","r").read())
+model_l.load_weights(wd+"weight_bombacav.h5")
 
 #%%
 #%% 
