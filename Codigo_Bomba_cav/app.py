@@ -104,7 +104,7 @@ img_file_buffer = st.file_uploader("Envie")
 
 if img_file_buffer is not None:
     image = Image.open(img_file_buffer)
-    img_array = np.array(image)
+    image = np.array(image)
 
     model_l = models.model_from_json(open(wd+"model_bombacav.json","r").read())
     model_l.load_weights("weight_bombacav.h5")
