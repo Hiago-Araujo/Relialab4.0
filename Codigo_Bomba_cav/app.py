@@ -130,8 +130,6 @@ if img_file_buffer is not None:
     if aux == "Muita cavitação":
         st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
 
-agree = False
-
 st.subheader("Podemos de mandar uma Imagem de exemplo, baixe e envie para testar a previsão do modelo")
 agree = st.checkbox("Manda")
 
