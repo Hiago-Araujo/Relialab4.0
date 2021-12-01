@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from PIL import Image
 import random
-import keras.models
+from keras import model
 
 #%%
 wd = "/app/relialab4.0/Codigo_Bomba_cav/"
@@ -107,6 +107,17 @@ data = upload.read()
 
 model_l = models.model_from_json(open(wd+"model_bombacav.json","r").read())
 model_l.load_weights(wd+"weight_bombacav.h5")
+
+def predict_path(data, model):
+    aux = np.array(mpimg.imread(data)[50:220,:,:])
+    dim = int(aux.shape[1]/dim_division), int(aux.shape[0]/dim_division)
+    aux = ((np.array(Image.fromarray(aux).convert('L').resize(dim)) - np.min(aux))/(np.max(aux) - np.min(aux))).reshape((1,dim[1],dim[0],1))
+    pred = model.predict(aux)
+    print(pred)
+    return(np.argmax(pred))
+
+aux = predict
+st.write("Nova Classificação: " + str(aux))
 
 #%%
 #%% 
