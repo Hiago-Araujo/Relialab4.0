@@ -116,7 +116,7 @@ def predict_path(data, model):
     print(pred)
     return(np.argmax(pred))
 
-aux = predict
+aux = predict_path(data, model_l)
 st.write("Nova Classificação: " + str(aux))
 
 #%%
