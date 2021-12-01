@@ -50,11 +50,13 @@ def read_dataset():
 
     dataset = []
     label = []
+    orig = []
     
     for direc in folders:
         name_dir = wd+direc
         images = os.listdir(name_dir)
         for i in images:
+            orig.append(aux = np.array(mpimg.imread(name_dir +'/' + i, )[:,:,:])) 
             aux = np.array(mpimg.imread(name_dir +'/' + i, )[50:220,:,:])
             dim = int(aux.shape[1]/dim_division), int(aux.shape[0]/dim_division)
             aux = ((np.array(Image.fromarray(aux).convert('L').resize(dim)) - np.min(aux))/(np.max(aux) - np.min(aux))).reshape((dim[1],dim[0],1))
@@ -64,7 +66,7 @@ def read_dataset():
         print (direc)
     
     dataset = np.asarray(dataset)
-    return dataset
+    return dataset, orig
 
 
     
@@ -83,7 +85,7 @@ fm = ["Sem cavitação", "Pouca cavitação", "Muita cavitação"]
 
 aux = st.radio('Modo de falha:', fm)
 
-dataset = read_dataset()
+dataset, orig = read_dataset()
 
 
 ind = np.where([m==aux for m in fm])[0][0]
@@ -129,6 +131,24 @@ if img_file_buffer is not None:
         st.image(np.array(mpimg.imread(wd+'icons/Pouco_cav.png')))
     if aux == "Muita cavitação":
         st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
+    
+    st.subheader("Imagem de exemplo, baixe e envie para testar a previsão do modelo")
+    if st.button("Manda", key=None, help=None, on_click=None, args=None, kwargs=None):
+        exemplo = random.choice(orig)
+        st.image(exemplo)
+        st.text("Qual o seu palpite?")
+        st.radio(fm, default = None)
+        st.text("a previsão correta é...")
+        
+        aux = fm[predict_path(image, model_l)]
+        
+        if aux == "Sem cavitação":
+            st.image(np.array(mpimg.imread(wd+'icons/Bom_cav.png')))
+        if aux == "Pouca cavitação":
+            st.image(np.array(mpimg.imread(wd+'icons/Pouco_cav.png')))
+        if aux == "Muita cavitação":
+            st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
+    
 
 #%%
 #%% 
