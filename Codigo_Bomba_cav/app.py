@@ -56,7 +56,7 @@ def read_dataset():
         name_dir = wd+direc
         images = os.listdir(name_dir)
         for i in images:
-            orig.append(aux = np.array(mpimg.imread(name_dir +'/' + i, )[:,:,:])) 
+            orig.append(np.array(mpimg.imread(name_dir +'/' + i, )[:,:,:])) 
             aux = np.array(mpimg.imread(name_dir +'/' + i, )[50:220,:,:])
             dim = int(aux.shape[1]/dim_division), int(aux.shape[0]/dim_division)
             aux = ((np.array(Image.fromarray(aux).convert('L').resize(dim)) - np.min(aux))/(np.max(aux) - np.min(aux))).reshape((dim[1],dim[0],1))
