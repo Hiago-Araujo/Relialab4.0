@@ -138,8 +138,11 @@ if img_file_buffer is not None:
 st.subheader("Imagem de exemplo, baixe e envie para testar a previsão do modelo")
 agree = st.checkbox("Manda")
 
+if not agree:
+    exemplo = ""
 if agree:
-    exemplo = random.choice(orig)
+    if exemplo = "":
+        exemplo = random.choice(orig)
     st.image(exemplo)
     st.text("Qual o seu palpite?")
     selec = st.selectbox("?", [''] + fm)
