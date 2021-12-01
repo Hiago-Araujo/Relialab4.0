@@ -82,9 +82,9 @@ def read_dataset():
 #%%
 st.title("""Lab Preditiva 4.0""")
 
-st.header("""Diagnóstico de bomba de cavitação""")
+st.header("""Diagnóstico de cavitação em bombas""")
 
-st.subheader("""Modelo de diagnóstico de bomba de cavitação""")
+st.subheader("""Modelo de Inteligência Artificial""")
 
 st.write("""O modelo foi construido baseado nos dados de uma bancada de teste de cavitação de bomba, os dados foram divididos em 3 níveis de cavitação distintos influenciado pelas válvulas grifada, dados de vibração foram coletados utilizando o equipamento e software da TEKNIKAO o qual emite gráficos de espectro de frequência apresentado abaixo""")
 st.image(np.array(mpimg.imread(wd + 'Bancada.jpeg')))
