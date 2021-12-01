@@ -100,9 +100,8 @@ st.image(aux)
 
 
 st.write("Envie uma nova imagem para diagnóstico")
-upload = st.file_uploader("Envie")
+img_file_buffer = st.file_uploader("Envie")
 
-img_file_buffer = upload.read()
 if img_file_buffer is not None:
     image = Image.open(img_file_buffer)
     img_array = np.array(image)
