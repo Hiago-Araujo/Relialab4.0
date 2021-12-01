@@ -137,7 +137,7 @@ if st.button("Manda"):
     exemplo = random.choice(orig)
     st.image(exemplo)
     st.text("Qual o seu palpite?")
-    selec = st.selectbox("?", ['', fm])
+    selec = st.selectbox("?", [''] + fm)
     
     if not selec == '':
         st.text("a previsão correta é...")
