@@ -78,7 +78,7 @@ def read_dataset():
     #        print(dim)
         print (direc)
     
-    datas = np.asarray(dataset)
+    datas = np.asarray(datas)
     return datas, ori, model
 
 
