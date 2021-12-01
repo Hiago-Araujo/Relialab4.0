@@ -64,14 +64,13 @@ def read_dataset():
         print (direc)
     
     dataset = np.asarray(dataset)
-    st.write(dataset.shape)
     return dataset
 
 
     
 #%%
 st.title("""Lab Preditiva 4.0""")
-st.write(str(os.getcwd()))
+
 st.header("""Diagnóstico de bomba de cavitação""")
 
 st.subheader("""Modelo de diagnóstico de bomba de cavitação""")
