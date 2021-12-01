@@ -51,7 +51,7 @@ folders = ["health_spectra", "fm1_spectra", "fm2_spectra"]
 
 dim_division = 2
 
-@st.cache(suppress_st_warning=True, allow_output_mutation=True)
+@st.cache(suppress_st_warning=True, allow_output_mutation=True, ttl = 3600)
 def read_dataset():
 
     datas = []
