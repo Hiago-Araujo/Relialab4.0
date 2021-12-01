@@ -16,7 +16,6 @@ import random
 
 #%%
 wd = "/app/relialab4.0/Codigo_Bomba_cav/"
-os.chdir(wd)
 
 
 #%%
@@ -24,7 +23,7 @@ os.chdir(wd)
 
 
 def plot_spectra(ind):
-    name_dir = folders[ind]
+    name_dir = wd+folders[ind]
     images = os.listdir(name_dir)
     
     fig=plt.figure(figsize = (10,5))
@@ -52,7 +51,7 @@ def read_dataset():
     label = []
     
     for direc in folders:
-        name_dir = direc
+        name_dir = wd+direc
         images = os.listdir(name_dir)
         for i in images:
             aux = np.array(mpimg.imread(name_dir +'/' + i, )[50:220,:,:])
