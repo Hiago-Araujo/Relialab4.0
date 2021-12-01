@@ -1,0 +1,5 @@
+matplotlib
+PIL
+numpy
+random
+os
