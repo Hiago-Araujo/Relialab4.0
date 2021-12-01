@@ -137,9 +137,9 @@ if st.button("Manda"):
     exemplo = random.choice(orig)
     st.image(exemplo)
     st.text("Qual o seu palpite?")
-    st.selectbox("?", ['', fm])
+    selec = st.selectbox("?", ['', fm])
     
-    if not selectbox == '':
+    if not selec == '':
         st.text("a previsão correta é...")
 
         aux = fm[predict_path(image, model_l)]
