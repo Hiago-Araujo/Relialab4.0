@@ -100,7 +100,7 @@ st.image(aux)
 
 
 st.write("Envie uma nova imagem para diagnóstico")
-upload = st.file_uploader()
+upload = st.file_uploader("Envie")
 
 data = upload.read()
 
