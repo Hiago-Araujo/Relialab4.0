@@ -141,7 +141,7 @@ agree = st.checkbox("Manda")
 if not agree:
     exemplo = ""
 if agree:
-    if exemplo = "":
+    if exemplo == "":
         exemplo = random.choice(orig)
     st.image(exemplo)
     st.text("Qual o seu palpite?")
