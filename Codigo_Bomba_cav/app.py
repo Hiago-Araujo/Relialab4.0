@@ -133,27 +133,10 @@ if img_file_buffer is not None:
 st.subheader("Podemos de mandar uma Imagem de exemplo, baixe e envie para testar a previsão do modelo")
 agree = st.checkbox("Manda")
 
-if not agree or ('exemplo' not in locals()):
-    exemplo = ""
 if agree:
     if exemplo == "":
         exemplo = random.choice(orig)
     st.image(exemplo)
-    st.subheader("Você arrisca um palpite?")
-    selec = st.selectbox("?", [''] + fm)
-    
-    if not selec == '':
-        st.text("a previsão correta é...")
-
-        aux = fm[predict_path(exemplo, model_l)]
-
-        if aux == "Sem cavitação":
-            st.image(np.array(mpimg.imread(wd+'icons/Bom_cav.png')))
-        if aux == "Pouca cavitação":
-            st.image(np.array(mpimg.imread(wd+'icons/Pouco_cav.png')))
-        if aux == "Muita cavitação":
-            st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
-
 
 #%%
 #%% 
