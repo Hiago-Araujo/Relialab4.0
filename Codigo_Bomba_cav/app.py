@@ -134,8 +134,7 @@ st.subheader("Podemos de mandar uma Imagem de exemplo, baixe e envie para testar
 agree = st.checkbox("Manda")
 
 if agree:
-    if exemplo == "":
-        exemplo = random.choice(orig)
+    exemplo = random.choice(orig)
     st.image(exemplo)
 
 #%%
