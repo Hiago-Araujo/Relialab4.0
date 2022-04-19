@@ -51,7 +51,7 @@ folders = ["health_spectra", "fm1_spectra", "fm2_spectra"]
 
 dim_division = 2
 
-#@st.cache(suppress_st_warning=True, allow_output_mutation=True, ttl = 3600)
+@st.cache(suppress_st_warning=True, allow_output_mutation=True, ttl = 3600)
 def read_dataset():
 
     datas = []
@@ -115,20 +115,20 @@ st.subheader("Você pode também acrescentar novas imagens e o modelo irá reali
 st.write("Envie uma nova imagem para diagnóstico")
 img_file_buffer = st.file_uploader("Envie")
 
-if img_file_buffer is not None:
-    image = Image.open(img_file_buffer)
-    image = np.array(image)
-    st.image(image)
-    
-    aux = fm[predict_path(image, model_l)]
+#if img_file_buffer is not None:
+image = Image.open(img_file_buffer)
+image = np.array(image)
+st.image(image)
 
-    st.subheader("O modelo previu o seguinte resultado para a imagem: ")
-    if aux == "Sem cavitação":
-        st.image(np.array(mpimg.imread(wd+'icons/Bom_cav.png')))
-    if aux == "Pouca cavitação":
-        st.image(np.array(mpimg.imread(wd+'icons/Pouco_cav.png')))
-    if aux == "Muita cavitação":
-        st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
+aux = fm[predict_path(image, model_l)]
+
+st.subheader("O modelo previu o seguinte resultado para a imagem: ")
+if aux == "Sem cavitação":
+    st.image(np.array(mpimg.imread(wd+'icons/Bom_cav.png')))
+if aux == "Pouca cavitação":
+    st.image(np.array(mpimg.imread(wd+'icons/Pouco_cav.png')))
+if aux == "Muita cavitação":
+    st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
 
 st.subheader("Podemos de mandar uma Imagem de exemplo, baixe e envie para testar a previsão do modelo")
 agree = st.checkbox("Manda")
