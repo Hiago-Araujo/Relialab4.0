@@ -120,14 +120,14 @@ if img_file_buffer is not None:
     image = np.array(image)
     st.image(image)
 
-aux = fm[predict_path(image, model_l)]
-st.subheader("O modelo previu o seguinte resultado para a imagem: ")
-if aux == "Sem cavitação":
-    st.image(np.array(mpimg.imread(wd+'icons/Bom_cav.png')))
-if aux == "Pouca cavitação":
-    st.image(np.array(mpimg.imread(wd+'icons/Pouco_cav.png')))
-if aux == "Muita cavitação":
-    st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
+    aux = fm[predict_path(image, model_l)]
+    st.subheader("O modelo previu o seguinte resultado para a imagem: ")
+    if aux == "Sem cavitação":
+        st.image(np.array(mpimg.imread(wd+'icons/Bom_cav.png')))
+    if aux == "Pouca cavitação":
+        st.image(np.array(mpimg.imread(wd+'icons/Pouco_cav.png')))
+    if aux == "Muita cavitação":
+        st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
 
 st.subheader("Podemos de mandar uma Imagem de exemplo, baixe e envie para testar a previsão do modelo")
 agree = st.checkbox("Manda")
