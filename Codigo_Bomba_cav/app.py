@@ -80,13 +80,15 @@ def read_dataset():
 
     
 #%%
-st.title("""Lab Preditiva 4.0""")
+st.title("""Laboratório de Análise de Vibrações - Senai Cimatec""")
 
 st.header("""Diagnóstico de cavitação em bombas""")
 
 st.subheader("""Modelo de Inteligência Artificial""")
 
-st.write("""O modelo foi construido baseado nos dados de uma bancada de teste de cavitação de bomba, os dados foram divididos em 3 níveis de cavitação distintos influenciado pelas válvulas grifada, dados de vibração foram coletados utilizando o equipamento e software da TEKNIKAO o qual emite gráficos de espectro de frequência apresentado abaixo""")
+st.write("""O modelo foi construido baseado nos dados de uma bancada de teste de cavitação de bomba, os dados foram divididos em 3 níveis de cavitação distintos simulados a partir das válvulas destacadas, dados de vibração foram coletados utilizando o equipamento e software da TEKNIKAO (https://www.teknikao.com.br/) o qual emite gráficos resultante de uma transformada rápida de fourier""")
+st.write("""Confira abaixo como o nível de cavitação altera o gráfico para os dados registrados: """)
+
 st.image(np.array(mpimg.imread(wd + 'Bancada.jpeg')))
 
 
@@ -102,7 +104,7 @@ ind = np.where([m==aux for m in fm])[0][0]
 fig = plot_spectra(ind)
 
     
-st.write('A ideia é que a inteligência artificial, a partir de um conjunto de imagens de treinamento, possa observar essas alterações no comportamento. O modelo é uma rede neural convolucional 2d de processamento de imagem, cujo treinamento foi feito utilizando ' + str(int(dataset.shape[0]*0.99)) + ' imagens e o teste foi executado utilizando ' + str(int(dataset.shape[0]*0.33)) +' imagens')
+st.write('A ideia é que o modelo de aprendizagem de máquina, a partir de um conjunto de imagens de treinamento, possa observar essas alterações no comportamento do gráfico . O modelo é uma rede neural convolucional 2d de processamento de imagem, cujo treinamento foi feito utilizando ' + str(int(dataset.shape[0]*0.99)) + ' imagens e o teste foi executado utilizando ' + str(int(dataset.shape[0]*0.33)) +' imagens')
 
 st.write('Após o treinamento, é necessário avaliar os resultados para um conjunto de dados separado dos que a IA usou para aprender, Os resultados das previsões no conjunto de teste são apresentados na matriz de confusão. Note que nossa rede erra apenas 1 dos dados de testes :)')
 
@@ -129,7 +131,7 @@ if img_file_buffer is not None:
     if aux == "Muita cavitação":
         st.image(np.array(mpimg.imread(wd+'icons/critico.png')))
 
-st.subheader("Podemos de mandar uma Imagem de exemplo, baixe e envie para testar a previsão do modelo")
+st.subheader("Podemos te enviar uma imagem de exemplo para testar a previsão do modelo")
 agree = st.checkbox("Manda")
 
 if agree:
