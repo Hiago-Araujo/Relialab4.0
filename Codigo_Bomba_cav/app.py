@@ -81,8 +81,8 @@ def read_dataset():
     
 #%%
 aux = np.array(mpimg.imread(wd + 'marca-topo.jpg'))
-aux.resize((200,75))
-st.image(aux)
+#aux.resize((200,75))
+st.image(aux, width = 100)
 
 st.title("""Laboratório de Análise de Vibrações - Senai Cimatec""")
 
