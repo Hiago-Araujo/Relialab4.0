@@ -80,6 +80,9 @@ def read_dataset():
 
     
 #%%
+aux = np.array(mpimg.imread(wd + 'marca-topo.jpg'))
+st.image(aux)
+
 st.title("""Laboratório de Análise de Vibrações - Senai Cimatec""")
 
 st.header("""Diagnóstico de cavitação em bombas""")
